@@ -1,4 +1,5 @@
 # Los Angeles County Police Killings (2000 - May 2020)
+![](https://github.com/isabellabenabaye/los-angeles-police-killings/blob/master/police_killings.png?raw=true)
 
 This repository contains my work looking into the [Los Angeles Times'](https://www.latimes.com/) [database](https://github.com/datadesk/los-angeles-police-killings-data) of deaths at the hands of local police in Los Angeles County. My latest extraction of their database for my output was on June 13, 2020. 
 
