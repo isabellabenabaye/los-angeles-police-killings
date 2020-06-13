@@ -53,7 +53,7 @@ perc_plot <- percentages %>%
 
 
 # In which neighborhoods were the most Black and Latino people killed by police?
-# Neighborhoods with the most deaths of black people
+# Neighborhoods with the most deaths of Black people
 neighborhoods_black <- killings_data %>% 
   filter(race == "Black") %>% 
   group_by(neighborhood) %>% 
@@ -70,7 +70,7 @@ neighborhoods_black <- killings_data %>%
             position = position_stack(vjust = 0.5), family = "IBM Plex Mono", size = 5) +
   theme(axis.text.x = element_blank(), axis.line = element_blank())
 
-# Neighborhoods with the most deaths of latino people
+# Neighborhoods with the most deaths of Latino people
 neighborhoods_latino <- killings_data %>% 
   filter(race == "Latino") %>% 
   group_by(neighborhood) %>% 
@@ -90,12 +90,12 @@ neighborhoods_latino <- killings_data %>%
 # Ages at time of death of Black and Latino people who were killed
 ages <- killings_data %>% 
   ggplot(aes(age)) +
-  labs(x = "Age", y = "", title = "How old were they?", caption = "Data: Los Angeles Times, US Census Bureau | Plot: @_isabellamb") +
+  labs(x = "Age", y = "", title = "How old were they?", caption = "Data: Los Angeles Times, U.S. Census Bureau | Plot: @_isabellamb") +
   geom_histogram(data = subset(killings_data, race == "Latino"), fill = "#00A1D5", alpha = 0.6) + 
   geom_histogram(data = subset(killings_data, race == "Black"), fill = "#DF8F44", alpha = 0.6) +
   scale_x_continuous(limits = c(10,90), breaks = seq(0,90,10), expand = expansion(0,0)) +
   scale_y_continuous(expand = expansion(0,0)) +
-  theme(axis.ticks.x = element_line(color = "gray20"),
+  theme(axis.ticks.x = element_line(color = "gray20"), ## add axis ticks
         axis.ticks.y = element_line(color = "gray20"))
 
 # Titles
