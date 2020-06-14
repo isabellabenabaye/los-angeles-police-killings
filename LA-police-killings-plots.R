@@ -13,10 +13,14 @@ population_data <- read_csv('QuickFacts Jun-12-2020.csv', n_max = 7, skip = 10, 
 
 pop_data <- population_data %>% 
   select(race,percent) %>% 
-  filter(!race %in% c("American Indian and Alaska Native alone, percent","Native Hawaiian and Other Pacific Islander alone, percent","Two or More Races, percent")) %>% 
+  filter(race != "Two or More Races, percent") %>% 
   mutate(pop_percent = as.numeric(sub("%", "", percent))/100,
-         race = word(race,1),
-         race = if_else(race == "Hispanic","Latino",race))
+         race = if_else(race == "Hispanic or Latino, percent","Latino",race),
+         race = if_else(race %in% c("American Indian and Alaska Native alone, percent","Native Hawaiian and Other Pacific Islander alone, percent"),"Other",race),
+         race = word(race,1)) %>% 
+  select(race,pop_percent) %>% 
+  group_by(race) %>% 
+  summarise(pop_percent = sum(pop_percent))
 
 percentages <- killings_data %>% 
   group_by(race) %>% 
@@ -48,7 +52,8 @@ perc_plot <- percentages %>%
   geom_bar(aes(x = pop_percent), stat = "identity", alpha = 0.15) +
   geom_bar(aes(x = killings_percent, fill = race), stat = "identity", width = 0.5, show.legend = FALSE) +
   scale_x_continuous(labels = scales::percent_format(accuracy = 1), expand = expansion(0,0), limits = c(0,.6)) +
-  paletteer::scale_fill_paletteer_d("ggsci::default_jama") +
+  scale_fill_manual(values = c("#374E55","#DF8F44","#00A1D5","#79AF97","#B24745")) +
+  # paletteer::scale_fill_paletteer_d("ggsci::default_jama") +
   theme(axis.line.y = element_blank(), axis.ticks.x = element_line(color = "gray20"))
 
 
@@ -117,3 +122,15 @@ row2 <- plot_grid(t2,neighborhoods, ncol = 1, rel_heights = c(0.1,0.9))
 plot_grid(row1, row2, ages, ncol = 1, rel_heights = c(0.4,0.3,0.3)) +
   theme(plot.margin = margin(30,20,10,30), plot.background = element_rect(fill = "#F7F7F7", color = "#F7F7F7"))
 ggsave("police_killings.png", device = "png", type = "cairo", width = 15, height = 20, dpi = 300)
+
+
+# Individual plots -----
+perc_plot <- perc_plot + theme(plot.margin = margin(20,20,0,20))
+ggsave(plot = perc_plot, "perc_plot.png", device = "png", type = "cairo", width = 15, height = 8, dpi = 300)
+
+row2 <- row2 + theme(plot.margin = margin(20,20,0,20), plot.background = element_rect(fill = "#F7F7F7", color = "#F7F7F7"))
+ggsave(plot = row2, "neighborhoods.png", device = "png", type = "cairo", width = 15, height = 8, dpi = 300)
+
+ages <- ages + labs(caption = "") + theme(plot.margin = margin(20,20,10,20))
+ggsave(plot = ages, "ages.png", device = "png", type = "cairo", width = 15, height = 8, dpi = 300)
+
