@@ -1,0 +1,85 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    
+      <meta charset="utf-8">
+      <title>Neighborhoods with the most Black police killings</title>
+      
+      
+        
+          
+        
+        
+          
+        <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.0.2.min.js" integrity="sha384-ufR9RFnRs6lniiaFvtJziE0YeidtAgBRH6ux2oUItHw5WTvE1zuk9uzhUU/FJXDp" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            Bokeh.set_log_level("info");
+        </script>
+        
+      
+      
+    
+  </head>
+  
+  
+  <body>
+    
+      
+        
+          
+          
+            
+              <div class="bk-root" id="6c96bb0c-548b-4334-85b9-33ae8b0d81a7" data-root-id="6879"></div>
+            
+          
+        
+      
+      
+        <script type="application/json" id="7284">
+          {"3c01a7d3-0621-4a2b-8cac-03a1022e9891":{"roots":{"references":[{"attributes":{"below":[{"id":"6888"}],"center":[{"id":"6891"},{"id":"6894"}],"left":[{"id":"6892"}],"plot_height":400,"plot_width":750,"renderers":[{"id":"6912"}],"title":{"id":"7113"},"toolbar":{"id":"6902"},"toolbar_location":null,"x_range":{"id":"6880"},"x_scale":{"id":"6884"},"y_range":{"id":"6882"},"y_scale":{"id":"6886"}},"id":"6879","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"6886","type":"CategoricalScale"},{"attributes":{"source":{"id":"5637"}},"id":"6913","type":"CDSView"},{"attributes":{"axis":{"id":"6892"},"dimension":1,"ticker":null},"id":"6894","type":"Grid"},{"attributes":{"data_source":{"id":"5637"},"glyph":{"id":"6910"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"6911"},"selection_glyph":null,"view":{"id":"6913"}},"id":"6912","type":"GlyphRenderer"},{"attributes":{"data":{"index":["Gardena","Vermont Square","Downtown","Green Meadows","Compton","Long Beach","Inglewood"],"neighborhood":[6,6,7,7,15,15,18]},"selected":{"id":"5854"},"selection_policy":{"id":"5853"}},"id":"5637","type":"ColumnDataSource"},{"attributes":{"text":""},"id":"7113","type":"Title"},{"attributes":{"axis":{"id":"6888"},"ticker":null},"id":"6891","type":"Grid"},{"attributes":{},"id":"5853","type":"UnionRenderers"},{"attributes":{},"id":"6893","type":"CategoricalTicker"},{"attributes":{},"id":"6898","type":"SaveTool"},{"attributes":{},"id":"6889","type":"BasicTicker"},{"attributes":{},"id":"6900","type":"HelpTool"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"6895"},{"id":"6896"},{"id":"6897"},{"id":"6898"},{"id":"6899"},{"id":"6900"},{"id":"6914"}]},"id":"6902","type":"Toolbar"},{"attributes":{},"id":"7115","type":"CategoricalTickFormatter"},{"attributes":{},"id":"7117","type":"BasicTickFormatter"},{"attributes":{"start":0},"id":"6880","type":"DataRange1d"},{"attributes":{"factors":["Gardena","Vermont Square","Downtown","Green Meadows","Compton","Long Beach","Inglewood"]},"id":"6882","type":"FactorRange"},{"attributes":{"overlay":{"id":"6901"}},"id":"6897","type":"BoxZoomTool"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#DF8F44"},"height":{"value":0.95},"line_alpha":{"value":0.1},"right":{"field":"neighborhood"},"y":{"field":"index"}},"id":"6911","type":"HBar"},{"attributes":{"bottom_units":"screen","fill_alpha":0.5,"fill_color":"lightgrey","left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"6901","type":"BoxAnnotation"},{"attributes":{},"id":"6896","type":"WheelZoomTool"},{"attributes":{},"id":"6899","type":"ResetTool"},{"attributes":{"formatter":{"id":"7117"},"major_label_text_font":"IBM Plex Mono","major_label_text_font_size":"12pt","ticker":{"id":"6889"}},"id":"6888","type":"LinearAxis"},{"attributes":{},"id":"6884","type":"LinearScale"},{"attributes":{},"id":"5854","type":"Selection"},{"attributes":{"formatter":{"id":"7115"},"major_label_text_font":"IBM Plex Mono","major_label_text_font_size":"13pt","ticker":{"id":"6893"}},"id":"6892","type":"CategoricalAxis"},{"attributes":{"fill_color":{"value":"#DF8F44"},"height":{"value":0.95},"right":{"field":"neighborhood"},"y":{"field":"index"}},"id":"6910","type":"HBar"},{"attributes":{"callback":null,"mode":"hline","tooltips":[["Neighborhood","@index"],["Number of killnings","@neighborhood"]]},"id":"6914","type":"HoverTool"},{"attributes":{},"id":"6895","type":"PanTool"}],"root_ids":["6879"]},"title":"Bokeh Application","version":"2.0.2"}}
+        </script>
+        <script type="text/javascript">
+          (function() {
+            var fn = function() {
+              Bokeh.safely(function() {
+                (function(root) {
+                  function embed_document(root) {
+                    
+                  var docs_json = document.getElementById('7284').textContent;
+                  var render_items = [{"docid":"3c01a7d3-0621-4a2b-8cac-03a1022e9891","root_ids":["6879"],"roots":{"6879":"6c96bb0c-548b-4334-85b9-33ae8b0d81a7"}}];
+                  root.Bokeh.embed.embed_items(docs_json, render_items);
+                
+                  }
+                  if (root.Bokeh !== undefined) {
+                    embed_document(root);
+                  } else {
+                    var attempts = 0;
+                    var timer = setInterval(function(root) {
+                      if (root.Bokeh !== undefined) {
+                        clearInterval(timer);
+                        embed_document(root);
+                      } else {
+                        attempts++;
+                        if (attempts > 100) {
+                          clearInterval(timer);
+                          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                        }
+                      }
+                    }, 10, root)
+                  }
+                })(window);
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+        </script>
+    
+  </body>
+  
+</html>
